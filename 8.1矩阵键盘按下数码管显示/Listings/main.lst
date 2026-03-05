@@ -1,0 +1,59 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              02/28/2026 15:30:51 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          #include "lcd1602.h"
+   4          #include "matrixKey.h"
+   5          #include "nixie.h"
+   6          
+   7          
+   8          unsigned char KeyNum;
+   9          unsigned char last_key = 0;
+  10          unsigned char shiwei=0;
+  11          unsigned char gewei=0;
+  12          
+  13          
+  14          void main()
+  15          {
+  16   1      
+  17   1      
+  18   1        while(1)
+  19   1        {
+  20   2          KeyNum=matrixKey();
+  21   2          if(KeyNum!=0)
+  22   2          {
+  23   3            last_key=KeyNum; // 记住按键值
+  24   3          }
+  25   2      
+  26   2          shiwei=last_key/10;
+  27   2          gewei=last_key%10;
+  28   2          nixie(1,shiwei);
+  29   2          nixie(2,gewei);
+  30   2          
+  31   2          Delay(3);
+  32   2          
+  33   2        }
+  34   1      
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     56    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

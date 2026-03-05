@@ -1,0 +1,126 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/01/2026 17:15:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          #include "lcd1602.h"
+   4          #include "matrixKey.h"
+   5          #include "nixie.h"
+   6          
+   7          
+   8          unsigned char KeyNum;
+   9          unsigned char last_key = 0;
+  10          unsigned char four=0;
+  11          unsigned char three=0;
+  12          unsigned char two=0;
+  13          unsigned char one=0;
+  14          unsigned int Count=0,sign=0;
+  15          
+  16          void main()
+  17          {
+  18   1      
+  19   1      
+  20   1        while(1)
+  21   1        {
+  22   2          KeyNum=matrixKey();
+  23   2          if(KeyNum)
+  24   2          {
+  25   3            if(KeyNum<=10)
+  26   3            {
+  27   4              last_key=KeyNum%10; // 记住按键值
+  28   4              Count++;//位数加一
+  29   4              
+  30   4      
+  31   4              
+  32   4            }
+  33   3            
+  34   3            if(KeyNum==11)//确认键
+  35   3            {
+  36   4              if(one==6,two==6,three==6,four==6)//密码6666
+  37   4              {
+  38   5                sign=1;
+  39   5              }
+  40   4              else
+  41   4              {
+  42   5                sign=2;
+  43   5              }
+  44   4      
+  45   4            }
+  46   3            
+  47   3            if(KeyNum==12)//清零
+  48   3            {
+  49   4              Count=0;
+  50   4              last_key=0;
+  51   4              one=0;
+  52   4              two=0;
+  53   4              three=0;
+  54   4              four=0;
+C51 COMPILER V9.60.0.0   MAIN                                                              03/01/2026 17:15:03 PAGE 2   
+
+  55   4            }
+  56   3            
+  57   3            
+  58   3            
+  59   3      
+  60   3          }
+  61   2          if(sign==1)//代表密码正确
+  62   2          {
+  63   3            nixie(8,1);
+  64   3          }
+  65   2          if(sign==2)//代表密码错误
+  66   2          {
+  67   3            nixie(8,0);
+  68   3          }
+  69   2            
+  70   2          
+  71   2          if(Count==1)
+  72   2          {
+  73   3          one=last_key;
+  74   3          }
+  75   2          if(Count==2)
+  76   2          {
+  77   3          two=last_key;
+  78   3          }
+  79   2          if(Count==3)
+  80   2          {
+  81   3          three=last_key;
+  82   3          }
+  83   2          if(Count==4)
+  84   2          {
+  85   3          four=last_key;
+  86   3          }
+  87   2          
+  88   2      
+  89   2      
+  90   2      
+  91   2          nixie(1,one);
+  92   2          nixie(2,two);
+  93   2          nixie(3,three);
+  94   2          nixie(4,four);
+  95   2          
+  96   2          Delay(3);
+  97   2          
+  98   2        }
+  99   1      
+ 100   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    217    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
