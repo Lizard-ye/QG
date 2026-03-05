@@ -1,0 +1,24 @@
+C51 COMPILER V9.60.0.0   __________________                                                02/15/2026 00:49:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE __________________
+OBJECT MODULE PLACED IN .\Objects\数码管显示单个数字.obj
+COMPILER INVOKED BY: E:\keil5\C51\BIN\C51.EXE 数码管显示单个数字.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\数码管显示单个数字.lst) TABS(2) OBJECT(.\Objects\数码管显示单个数字.obj)
+
+line level    source
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     10    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
